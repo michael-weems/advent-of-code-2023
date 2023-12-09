@@ -107,6 +107,10 @@ void parseSection(int ***maps, char * line, size_t len, FILE * fp, ssize_t read,
         maps[i1][i2][1] = extractNumber(line, &cursor);
         maps[i1][i2][2] = extractNumber(line, &cursor);
 
+        printf("maps[%d][%d][0] = %d\n", i1, i2, maps[i1][i2][0]);
+        printf("maps[%d][%d][1] = %d\n", i1, i2, maps[i1][i2][1]);
+        printf("maps[%d][%d][2] = %d\n", i1, i2, maps[i1][i2][2]);
+
         i2++;
     }
 }
@@ -196,6 +200,10 @@ int run(int argc, char* argv[]) {
     advance(line, len, fp, read, 0);
     int humidity_to_location_mappings = advance(line, len, fp, read, 1);
     mappings[6] = humidity_to_location_mappings;
+
+    for (int z = 0; z < 7; z++){
+        printf("mappings[%d] = %d\n", z, mappings[z]);
+    }
 
     closeFile(fp, line);
 
